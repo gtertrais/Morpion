@@ -5,43 +5,74 @@ require_relative 'player'
 require_relative 'board'
 
 
-class Game
+class Game < Player
+  attr_accessor :board, :player1, :player2
 
-  def p1
-    puts 'Player 1: Enter your first name:'
-    print '>'
-    name = gets.chomp.to_s
-    player1 = Player.new(name)
-    end
-
-  def p2
-    puts 'Player 2: Enter your first name:'
-    print '>'
-    name = gets.chomp.to_s
-    player2 = Player.new(name)
+  def initialize
+    @board = Board.new
   end
 
-  def greet(p1, p2)
+
+  def enter_name(p1, p2)
     puts "Welcome #{p1.name} and #{p2.name} to the Morpion!"
   end
 
 
-
 def show_table #display morpion 
-  board1 = Board.new
-  board1.table
+  @board.table
 end
 
 
+def menu
+  rows = []
+  rows << ["1", "2", "3"]
+  rows << :separator
+  rows << ["4", "5", "6"]
+  rows << :separator
+  rows <<  ["7", "8", "9"]
+  table = Terminal::Table.new :rows => rows
+  puts table
+end
 
 
+def menu_choice_player1
+  puts "Enter the case you want to cross (ex: a1, b3, c2, etc...)"
+  choice = gets.chomp.to_i
+  if @board.cases_array[choice-1].values.to_s == '[0]'
+    @board.cases_array[choice-1] = {choice-1 => 1}
+  else
+    puts "no"
+end
+end
 
-  def perform
-    greet(p1, p2)
-    show_table
-  end
+def menu_choice_player2
+  puts "Enter the case you want to cross (ex: a1, b3, c2, etc...)"
+  choice = gets.chomp.to_i
+  if @board.cases_array[choice-1].values.to_s == '[0]'
+    @board.cases_array[choice-1] = {choice-1 => 2}
+  else
+    puts "no"
+end
+end
+
+
+def change_table
+  @board.cases_array[0] = {0=>1}
+end
+
+
+def perform
+  
+  enter_name(p1, p2)
+  show_table
+  menu
+  menu_choice_player1
+  show_table
+  menu_choice_player2
+  show_table
 end
 
 game1 = Game.new
+perform
 
-game1.perform
+end

@@ -2,10 +2,19 @@ require 'bundler'
 Bundler.require
 
 $:.unshift File.expand_path('./../lib/app', __FILE__)
-require 'board'
+require 'game'
+require 'player'
 
-board1 = Board.new
 
-board1.table
+ class Application < Game
+   
+ 
+game1 = Game.new
+
+
+end
+
+
+
 
 
