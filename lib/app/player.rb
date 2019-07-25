@@ -1,4 +1,5 @@
 require 'pry'
+
 class Player
   attr_accessor :name
 
@@ -15,7 +16,7 @@ class Player
     end
 
     def p2
-      puts 'Player 1: Enter your first name:'
+      puts 'Player 2: Enter your first name:'
       print '>'
       name = gets.chomp.to_s
       player = Player.new(name)

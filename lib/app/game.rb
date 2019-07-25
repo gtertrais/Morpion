@@ -1,11 +1,10 @@
 # frozen_string_literal: true
-
 require 'pry'
 require_relative 'player'
 require_relative 'board'
 
 
-class Game < Player
+class Game < Player  
   attr_accessor :board, :player1, :player2
 
   def initialize
@@ -23,6 +22,7 @@ def show_table #display morpion
 end
 
 
+
 def menu
   rows = []
   rows << ["1", "2", "3"]
@@ -36,7 +36,8 @@ end
 
 
 def menu_choice_player1
-  puts "Enter the case you want to cross (ex: a1, b3, c2, etc...)"
+  puts "Player1, Your turn !"
+  puts "Type the number"
   choice = gets.chomp.to_i
   if @board.cases_array[choice-1].values.to_s == '[0]'
     @board.cases_array[choice-1] = {choice-1 => 1}
@@ -46,7 +47,8 @@ end
 end
 
 def menu_choice_player2
-  puts "Enter the case you want to cross (ex: a1, b3, c2, etc...)"
+  puts "Player2, Your turn !"
+  puts "Type the number"
   choice = gets.chomp.to_i
   if @board.cases_array[choice-1].values.to_s == '[0]'
     @board.cases_array[choice-1] = {choice-1 => 2}
@@ -61,15 +63,30 @@ def change_table
 end
 
 
+ 
+
+
 
   def perform
-    enter_name(p1, p2)
-    show_table
-    menu
-    menu_choice_player1
-    show_table
-    menu_choice_player2
-    show_table
+      count = 0
+      enter_name(p1, p2)
+      system 'clear'
+      while @board.cases_array.length > count #&& win
+      show_table
+      menu
+      menu_choice_player1
+      system 'clear'
+      count += 1
+      show_table
+      menu
+     
+      if @board.cases_array.length > count # && win
+      menu_choice_player2
+      show_table
+      count += 1
+      system 'clear'
+      end
+    end
   end
 end
 

@@ -1,4 +1,4 @@
-#Welcome to my Ruby Program!
+#Morpion
 
 
 
@@ -7,7 +7,9 @@
 
 
 **Note aux correcteurs**
+Fait par Adrien, Antoine, Gwenael, Laeticia, Beatrice et Gaspard
 
+Le programme tourne mais ne prend pas encore de gagnants.
 
 
 ## Content
