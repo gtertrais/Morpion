@@ -9,8 +9,10 @@ require 'player'
  class Application < Game
    
  
-game1 = Game.new
+  game1 = Game.new
 
+  game1.perform
+  
 
 end
 

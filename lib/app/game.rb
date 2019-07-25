@@ -61,18 +61,17 @@ def change_table
 end
 
 
-def perform
-  
-  enter_name(p1, p2)
-  show_table
-  menu
-  menu_choice_player1
-  show_table
-  menu_choice_player2
-  show_table
+
+  def perform
+    enter_name(p1, p2)
+    show_table
+    menu
+    menu_choice_player1
+    show_table
+    menu_choice_player2
+    show_table
+  end
 end
 
-game1 = Game.new
-perform
 
-end
+
